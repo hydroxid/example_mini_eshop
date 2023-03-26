@@ -1,0 +1,24 @@
+search:
+	-
+		in: %appDir%
+		classes:
+			- *Factory
+			- *Facade
+
+
+services:
+	- App\Router\RouterFactory::createRouter
+
+	# forms
+	- App\Forms\ClientForm
+	- App\Forms\SearchForm
+
+	# models
+	- App\Model\Cart
+	- App\Model\Order
+
+	# utils
+	- App\Util\CurrencyExchange
+
+	# repositories
+	- App\Repository\ItemsRepository

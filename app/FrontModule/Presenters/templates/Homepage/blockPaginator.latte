@@ -1,0 +1,17 @@
+<div class="pagination my-3">
+{if $page > 1}
+  <a n:href="default, 1">První</a>
+  &nbsp;|&nbsp;
+  <a n:href="default, $page - 1">Předchozí</a>
+  &nbsp;|&nbsp;
+{/if}
+
+Stránka {$page} z {$lastPage}
+
+{if $page < $lastPage}
+  &nbsp;|&nbsp;
+  <a n:href="default, $page + 1">Další</a>
+  &nbsp;|&nbsp;
+  <a n:href="default, $lastPage">Poslední</a>
+{/if}
+</div>

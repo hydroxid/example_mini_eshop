@@ -1,0 +1,44 @@
+{block title}
+	Produkty
+{/block}
+
+{block content}
+<div class="row">
+
+	<div class="col-xl-9">
+
+		{snippetArea cartHeaderArea}
+			{include ../Cart/blockHeader.latte}
+		{/snippetArea}
+
+		<div class="card my-3">
+			<div class="card-header">
+				Výpis
+			</div>
+			<div class="card-body">
+					<div class="table-responsive">
+			      <table class="table table-hover table-sm small mb-0">
+			        <thead class="thead-dark">
+			          <tr>
+									<th>Akce</th>
+			            <th>Název</th>
+									<th>Cena Kč/ks</th>
+									<th>Cena EUR/ks</th>
+			          </tr>
+			        </thead>
+			        <tbody>
+			          {foreach $rows as $r}
+									{include blockRow.latte, 'r' => $r}
+			          {/foreach}
+			        </tbody>
+			      </table>
+			    </div>
+					<span class="badge bg-secondary mt-3">Kurz {$currencyEur}</span>
+
+					{include blockPaginator.latte}
+
+				</div>
+			</div>
+		</div>
+
+</div>

@@ -1,0 +1,36 @@
+<tr>
+  <td>
+    {if !$presenter->isLinkCurrent('Cart:')}
+      <a n:href="saveItem! $r->it_id" class="btn btn-success btn-sm ajax">Koupit</a>
+    {/if}
+    {if !$presenter->isLinkCurrent('Homepage:show')}
+      <a n:href="Homepage:show $r->it_id" class="btn btn-success btn-sm">Detail</a>
+    {/if}
+  </td>
+  <td>
+    {$r->it_name}
+    <div>
+      {foreach $r->related('tags') as $t}
+         <span class="badge bg-primary">{$t->t_id->t_name}</span>
+       {/foreach}
+    </div>
+  </td>
+  <td>
+    {$r->it_price|number,0,',',' '} Kč
+  </td>
+  <td>
+    {if $currencyEur}{$r->it_price/$currencyEur|number,2}{else}-{/if} EUR
+  </td>
+
+  {if isset($cartItems)}
+    <td>
+      {foreach $cartItems as $key => $qty}
+         {if $key == $r->it_id}
+            {$qty} ks
+         {/if}
+      {/foreach}
+      <a n:href="deleteItem! $key" class="btn btn-outline-danger btn-sm py-0 ms-1 ml-1 ajax">Smazat</a>
+    </td>
+  {/if}
+
+</tr>
